@@ -1,0 +1,61 @@
+.carousel-home {
+	margin-bottom: 25px;
+}
+.mt-element-overlay .mt-overlay-5:hover .mt-overlay a,
+.mt-element-overlay .mt-overlay-5 .mt-overlay a {
+	width: 100%;
+	margin-top: 200px;
+}
+
+.mt-overlay-5 .mt-overlay .btn.btn-outline.default:hover {
+	background-color: rgba(225,229,236, 0.7);
+	color: #fff;
+}
+.font-hover-white:hover {
+	color: white !important;
+}
+.quick-nav {
+	top: 70%;
+}
+
+.header-cart i {
+	color: #a4b4bb;
+}
+
+.header-cart span.badge {
+	margin: -25px 0 0 -5px;
+}
+
+.page-quick-sidebar-open .page-quick-sidebar-toggler>i:before {
+	content: "\e082";
+}
+.login {
+	background-color: transparent !important;
+}
+
+.login .content {
+	background: transparent;
+	width: 310px;
+	margin: auto;
+	padding: 10px;
+	overflow: hidden;
+	position: relative
+}
+
+.login .content .form-actions {
+	border: none;
+	padding: 25px 0;
+	margin: 0;
+}
+
+.login .content .create-account {
+	margin: 0 -40px 0px;
+}
+
+.bg-hxutixnnn {
+	background: linear-gradient(60deg, #5352ed, #341f97) !important;
+}
+
+.font-hxutixnnn {
+	color: #5352ed !important;
+}
