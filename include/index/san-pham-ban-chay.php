@@ -2,34 +2,34 @@
 
 
 function get_data() {
-    include 'require/db.php';
-    
-    // get SANPHAM
-    $select = $conn->query('SELECT * FROM SANPHAM WHERE daxoa = 0');
+    include_once 'libs/xulydb.php';
+    $db = new XuLyDB();
 
-    while ($row = $select->fetch_assoc()):
+    $row = $db->lay_du_lieu("SANPHAM");
+
+    foreach ($row as $product):
     ?>
         
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="mt-card-item">
                 <div class="mt-card-avatar mt-overlay-5">
-                    <img src="../assets/images/<?=$row['pid']?>.jpg">
+                    <img src="../assets/images/<?=$product['pid']?>.jpg">
                     <div class="mt-overlay">
                         <!-- <h2>Predator Shop</h2> -->
-                        <a class="mt-info uppercase btn default btn-outline" href="#">Xem chi tiết</a>
+                        <a class="mt-info uppercase btn default btn-outline" href="product.php?pid=<?=$product['pid']?>"><i class="fa fa-search"></i> Xem chi tiết</a>
                     </div>
                 </div>
                 <div class="mt-card-content">
                     <h3 class="mt-card-name">
-                        <?=$row['tensanpham']?>
+                        <?=$product['tensanpham']?>
                     </h3>
                     <p class="mt-card-desc font-grey-mint">
-                        <?= number_format($row['dongia']) ?> VNĐ
+                        <?= number_format($product['dongia']) ?> VNĐ
                     </p>
                     <div class="mt-card-social">
                         <ul>
                             <li>
-                                <a href="javascript:;" class="btn btn-transparent btn-no-border btn-circle font-green-meadow font-hover-white bg-hover-green-meadow tooltips" data-original-title="Thêm vào giỏ">
+                                <a href="cart.php?pid=<?=$product['pid']?>" class="btn btn-transparent btn-no-border btn-circle font-green-meadow font-hover-white bg-hover-green-meadow tooltips" data-original-title="Thêm vào giỏ">
                                     <i class="fa fa-cart-plus"></i>
                                 </a>
                             </li>
@@ -39,7 +39,7 @@ function get_data() {
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:;" class="btn btn-transparent btn-no-border btn-circle font-dark font-hover-white bg-hover-dark tooltips" data-original-title="Xem chi tiết">
+                                <a href="product.php?pid=<?=$product['pid']?>" class="btn btn-transparent btn-no-border btn-circle font-dark font-hover-white bg-hover-dark tooltips" data-original-title="Xem chi tiết">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </li>
@@ -55,8 +55,7 @@ function get_data() {
         </div>
 
     <?
-    endwhile;
-    $select->close();
+    endforeach;
 }
 ?>
 

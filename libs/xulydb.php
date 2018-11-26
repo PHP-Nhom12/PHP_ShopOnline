@@ -18,46 +18,84 @@ class XuLyDB {
 		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 
 		if ($this->conn->connect_error) {
+			die("Loi ket noi: " . $conn->connect_error);
 			$this->conn = null;
+		}
+		$this->conn->query("set names 'utf-8'");
+	}
+
+	public function __destruct() {
+		if ($this->conn != null)
+		{
+			$this->conn->close();
 		}
 	}
 
 	// Hàm insert
 	public function them_moi($params, $table) {
-		$fields = "";
-		$values = "";
+		$fields = [];
+		$values = [];
 		foreach ($params as $key => $value) {
-			$fields .= $key . ",";
-			$values .= "'" . $value . "',";
+			$fields[]= $key;
+			$values[]= "'" . $value . "',";
 		}
 
-		$sql = "INSERT INTO " . $table . "(". trim($fields, ",") . ") VALUES (" . trim($values, ",") . ")";
+		$fields = implode(",", $fields);
+		$values = implode(",", $values);
 
-		$kq = $this->conn->query($sql);
-
-		$this->conn->close();
-
-		if ($kq === TRUE) {
-			return TRUE
-		}
+		$sql = "INSERT INTO " . $table . "(". $fields . ") VALUES (" . $values . ")";
 		
-		return false;
-
-		// return mysqli_query($this->$conn, $sql);
+		return $this->conn->query($sql);
 	}
 
 
-	public function lay_du_lieu($table) {
-		$sql = "SELECT * FROM " . $table;
+	// public function lay_du_lieu($table) {
+	// 	$sql = "SELECT * FROM " . $table . " WHERE daxoa = 0";
+
+	// 	$result = $this->conn->query($sql);
+	// 	$n = $result->num_rows;
+
+	// 	$ket_qua = [];
+
+	// 	while ($row = $result->fetch_assoc()) {
+	// 		$ket_qua[] = $row;
+	// 	}
+
+	// 	return $ket_qua;
+	// }
+
+
+	public function lay_du_lieu($table, $param=null) {
+
+		if ($param != null)
+			$sql = "SELECT * FROM " . $table . " WHERE " . $param . " AND daxoa = 0";
+		else
+			$sql = "SELECT * FROM " . $table . " WHERE daxoa = 0";
 
 		$result = $this->conn->query($sql);
 		$n = $result->num_rows;
 
-		if ($n > 0) {
-			$ket_qua = $result->fetch_assoc();
+		$ket_qua = [];
+
+		while ($row = $result->fetch_assoc()) {
+			$ket_qua[] = $row;
 		}
 
-		$conn->close();
+		return $ket_qua;
+	}
+
+
+	public function tim_kiem($table, $where) {
+		$sql = "SELECT * FROM ".$table." WHERE ".$where;
+
+		$result = $this->conn->query($sql);
+		$n = $result->num_rows;
+
+		$ket_qua = [];
+
+		while ($row = $result->fetch_assoc()) {
+			$ket_qua[] = $row;
+		}
 
 		return $ket_qua;
 	}
@@ -80,7 +118,39 @@ class XuLyDB {
 	    return mysqli_query($this->__conn, $sql);
 	}
 
+	public function dem_so_dong($table, $param=null)
+	{
+		if ($param != null)
+			$sql = "SELECT * FROM " . $table . " WHERE " . $param;
+		else
+			$sql = "SELECT * FROM " . $table;
 
+		$result = $this->conn->query($sql);
+
+		return $result->num_rows;
+	}
+
+
+	public function lay_du_lieu_phan_trang($table, $limit ,$offset, $param=null)
+	{
+		
+		if ($param != null)
+			$sql = "SELECT * FROM " . $table . " WHERE " . $param . " LIMIT " . $offset . ", " . $limit;
+		else
+			$sql = "SELECT * FROM " . $table . " LIMIT " . $offset . ", " . $limit;
+
+		$result = $this->conn->query($sql);
+
+		$n = $result->num_rows;
+
+		$ket_qua = [];
+
+		while ($row = $result->fetch_assoc()) {
+			$ket_qua[] = $row;
+		}
+
+		return $ket_qua;
+	}
 
 
 }

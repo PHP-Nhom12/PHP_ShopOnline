@@ -7,8 +7,7 @@
         <!-- BEGIN LOGIN -->
         <div class="content">
             <?
-
-            if(isset($_SESSION['dang_nhap'])) {
+            if (!isset($_SESSION['dang_nhap']))
             {
             
                 include 'include/form/dang-nhap.php';
@@ -17,7 +16,9 @@
 
                 include 'include/form/quen-mat-khau.php'; 
 
-            } else {
+            } 
+            else
+            {
                 include 'include/form/gio-hang.php';
             }
             

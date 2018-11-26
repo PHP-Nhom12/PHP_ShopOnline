@@ -7,8 +7,8 @@
         <?
 
 
-            if(!isset($_SESSION['dang_nhap'])) {
-
+            if(!isset($_SESSION['dang_nhap']))
+            {
             ?>
                 <!-- SECTION "CHƯA ĐĂNG NHẬP" -->
                 
@@ -28,7 +28,7 @@
                 <li class="dropdown dropdown-user dropdown-dark">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" class="img-circle" src="../assets/layouts/layout3/img/avatar9.jpg">
-                        <span class="username username-hide-mobile"><?=$_SESSION['dang_nhap']->tentaikhoan?></span>
+                        <span class="username username-hide-mobile"><?=$_SESSION['dang_nhap']['tentaikhoan']?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>

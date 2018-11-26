@@ -16,7 +16,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="mt-card-item">
                                 <div class="mt-card-avatar mt-overlay-5">
-                                    <img src="../assets/images/ao01.jpg">
+                                    <img src="../assets/images/SP001.jpg">
                                     <div class="mt-overlay">
                                         <!-- <h2>Predator Shop</h2> -->
                                         <a class="mt-info uppercase btn default btn-outline" href="#">Xem chi tiết</a>
@@ -55,7 +55,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="mt-card-item">
                                 <div class="mt-card-avatar mt-overlay-5">
-                                    <img src="../assets/images/ao02.jpg">
+                                    <img src="../assets/images/SP002.jpg">
                                     <div class="mt-overlay mt-top">
                                         <a class="mt-info uppercase btn default btn-outline" href="#">Xem chi tiết</a>
                                     </div>
@@ -93,7 +93,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="mt-card-item">
                                 <div class="mt-card-avatar mt-overlay-5">
-                                    <img src="../assets/images/ao03.jpg">
+                                    <img src="../assets/images/SP003.jpg">
                                     <div class="mt-overlay">
                                         <a class="mt-info uppercase btn default btn-outline" href="#">Xem chi tiết</a>
                                     </div>
@@ -131,7 +131,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="mt-card-item">
                                 <div class="mt-card-avatar mt-overlay-5">
-                                    <img src="../assets/images/ao04.jpg">
+                                    <img src="../assets/images/SP004.jpg">
                                     <div class="mt-overlay">
                                         <a class="mt-info uppercase btn default btn-outline" href="#">Xem chi tiết</a>
                                     </div>

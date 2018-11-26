@@ -1,6 +1,6 @@
 <head>
         <meta charset="utf-8" />
-        <title>Shop Bán Hàng Online | Trang Chủ</title>
+        <title>Shop Bán Hàng Online</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for dashboard & statistics" name="description" />
@@ -30,6 +30,7 @@
         <!-- BEGIN PAGES STYLES -->
         <link href="../assets/pages/css/contact.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- CUSTOME STYLE -->
         <link href="../assets/pages/css/index.css" rel="stylesheet" type="text/css" />

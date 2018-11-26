@@ -1,8 +1,3 @@
-<?php
-
-session_start();
-
-?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -27,7 +22,7 @@ session_start();
                             <div class="container">
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
-                                    <a href="index.html">
+                                    <a href="index.php">
                                         <img src="../assets/layouts/layout3/img/logo-default.jpg" alt="logo" class="logo-default">
                                     </a>
                                 </div>
@@ -50,9 +45,9 @@ session_start();
                         <div class="page-header-menu">
                             <div class="container">
                                 <!-- BEGIN HEADER SEARCH BOX -->
-                                <form class="search-form" action="page_general_search.html" method="GET">
+                                <form class="search-form" action="search.php" method="GET">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search" name="query">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm" name="q">
                                         <span class="input-group-btn">
                                             <a href="javascript:;" class="btn submit">
                                                 <i class="icon-magnifier"></i>
@@ -66,149 +61,16 @@ session_start();
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown active">
-                                            <a href="javascript:;"> Dashboard
+                                        <li aria-haspopup="true" class="active">
+                                            <a href="index.php"> Trang Chủ
                                                 <span class="arrow"></span>
                                             </a>
-                                            <ul class="dropdown-menu pull-left">
-                                                <li aria-haspopup="true" class=" active">
-                                                    <a href="index.html" class="nav-link  active">
-                                                        <i class="icon-bar-chart"></i> Default Dashboard
-                                                        <span class="badge badge-success">1</span>
-                                                    </a>
-                                                </li>
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="dashboard_2.html" class="nav-link  ">
-                                                        <i class="icon-bulb"></i> Dashboard 2 </a>
-                                                </li>
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="dashboard_3.html" class="nav-link  ">
-                                                        <i class="icon-graph"></i> Dashboard 3
-                                                        <span class="badge badge-danger">3</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  ">
-                                            <a href="javascript:;"> UI Features
+                                            <a href="product.php"> Sản Phẩm
                                                 <span class="arrow"></span>
                                             </a>
-                                            <ul class="dropdown-menu" style="min-width: 710px">
-                                                <li>
-                                                    <div class="mega-menu-content">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <ul class="mega-menu-submenu">
-                                                                    <li>
-                                                                        <a href="ui_colors.html"> Color Library </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_metronic_grid.html"> Metronic Grid System </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_general.html"> General Components </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_buttons.html"> Buttons </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_buttons_spinner.html"> Spinner Buttons </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_confirmations.html"> Popover Confirmations </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_sweetalert.html"> Bootstrap Sweet Alerts </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_icons.html"> Font Icons </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_socicons.html"> Social Icons </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_typography.html"> Typography </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_tabs_accordions_navs.html"> Tabs, Accordions & Navs </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_tree.html"> Tree View </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="maps_google.html"> Google Maps </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <ul class="mega-menu-submenu">
-                                                                    <li>
-                                                                        <a href="maps_vector.html"> Vector Maps </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_timeline.html"> Timeline 1 </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_timeline_2.html"> Timeline 2 </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_timeline_horizontal.html"> Horizontal Timeline </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_page_progress_style_1.html"> Page Progress Bar - Flash </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_page_progress_style_2.html"> Page Progress Bar - Big Counter </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_blockui.html"> Block UI </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_bootstrap_growl.html"> Bootstrap Growl Notifications </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_notific8.html"> Notific8 Notifications </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_toastr.html"> Toastr Notifications </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_bootbox.html"> Bootbox Dialogs </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <ul class="mega-menu-submenu">
-                                                                    <li>
-                                                                        <a href="ui_alerts_api.html"> Metronic Alerts API </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_session_timeout.html"> Session Timeout </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_idle_timeout.html"> User Idle Timeout </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_modals.html"> Modals </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_extended_modals.html"> Extended Modals </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_tiles.html"> Tiles </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_datepaginator.html"> Date Paginator </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ui_nestable.html"> Nestable List </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a href="javascript:;"> Layouts
