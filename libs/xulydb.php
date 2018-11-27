@@ -68,7 +68,7 @@ class XuLyDB {
 	public function lay_du_lieu($table, $param=null) {
 
 		if ($param != null)
-			$sql = "SELECT * FROM " . $table . " WHERE " . $param . " AND daxoa = 0";
+			$sql = "SELECT * FROM " . $table . " WHERE " . $param;
 		else
 			$sql = "SELECT * FROM " . $table . " WHERE daxoa = 0";
 
@@ -77,8 +77,33 @@ class XuLyDB {
 
 		$ket_qua = [];
 
-		while ($row = $result->fetch_assoc()) {
-			$ket_qua[] = $row;
+		if ($n > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$ket_qua[] = $row;
+			}			
+		}
+
+
+
+		return $ket_qua;
+	}
+
+	public function lay_du_lieu_moi_nhat($table, $param=null) {
+
+		if ($param != null)
+			$sql = "SELECT * FROM " . $table . " WHERE daxoa = 0 ORDER BY " . $param . " DESC";
+		else
+			$sql = "SELECT * FROM " . $table . " WHERE daxoa = 0";
+
+		$result = $this->conn->query($sql);
+		$n = $result->num_rows;
+
+		$ket_qua = [];
+
+		if ($n > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$ket_qua[] = $row;
+			}
 		}
 
 		return $ket_qua;
@@ -93,10 +118,12 @@ class XuLyDB {
 
 		$ket_qua = [];
 
-		while ($row = $result->fetch_assoc()) {
-			$ket_qua[] = $row;
+		if ($n > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$ket_qua[] = $row;
+			}
 		}
-
+		
 		return $ket_qua;
 	}
 
@@ -145,8 +172,10 @@ class XuLyDB {
 
 		$ket_qua = [];
 
-		while ($row = $result->fetch_assoc()) {
-			$ket_qua[] = $row;
+		if ($n > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$ket_qua[] = $row;
+			}
 		}
 
 		return $ket_qua;

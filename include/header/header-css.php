@@ -19,8 +19,8 @@
         <link href="../assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="../assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="../assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
@@ -33,7 +33,7 @@
         <link href="../assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- CUSTOME STYLE -->
-        <link href="../assets/pages/css/index.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/index.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
 </head>

@@ -1,11 +1,6 @@
 <?
 
     include_once 'libs/xulydb.php';
-    
-    $db = new XuLyDB();
-
-
-    include_once 'libs/xulydb.php';
     $db = new XuLyDB();
 
     $tong_so_dong = $db->dem_so_dong("SANPHAM", "loaisp = 4");
@@ -119,35 +114,51 @@
                                         if ($trang_hien_tai > 1) {
                                         ?>
                                             <li>
+                                                <a href="product.php?page=1">
+                                                    <i class="fa fa-angle-double-left"></i>
+                                                </a>
+                                            </li>
+                                            <li>
                                                 <a href="product.php?page=<?=$trang_hien_tai-1?>">
                                                     <i class="fa fa-angle-left"></i>
                                                 </a>
                                             </li>
                                         <? 
                                         }
-                                        
-                                        for ($i=1; $i < $tong_so_trang; $i++) { 
-                                            if ($i == $trang_hien_tai) {
-                                            ?>
+                                        else
+                                        {
+                                        ?>
+
                                             <li class="disabled">
-                                                <a href="javascript:;"> <?=$i?> </a>
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-angle-double-left"></i>
+                                                </a>
                                             </li>
-                                            <?
-                                            } else {
-                                            ?>
-
-                                            <li>
-                                                <a href="product.php?page=<?=$i?>"> <?=$i?> </a>
+                                            <li class="disabled">
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
                                             </li>
-                                            <?
-                                            }
+                                        <?
                                         }
+                                        ?>
+                                            <li class="disabled">
+                                                <a href="javascript:;"> <?=$trang_hien_tai?> / <?=$tong_so_trang?></a>
+                                            </li>
+                                            
+                                        <?
+                                        
 
-                                        if ($trang_hien_tai < $i-1) {
+                                        if ($trang_hien_tai < $tong_so_trang) {
                                         ?>
                                             <li>
                                                 <a href="product.php?page=<?=$trang_hien_tai+1?>">
                                                     <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="product.php?page=<?=$tong_so_trang?>">
+                                                    <i class="fa fa-angle-double-right"></i>
                                                 </a>
                                             </li>
                                         <? 

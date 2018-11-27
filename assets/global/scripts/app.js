@@ -399,7 +399,7 @@ var App = function() {
         $('.portlet > .portlet-title > .tools > .collapse, .portlet > .portlet-title > .tools > .expand').tooltip({
             trigger: 'hover',
             container: 'body',
-            title: 'Collapse/Expand'
+            title: 'Thu gọn/Mở rộng'
         });
     };
 
