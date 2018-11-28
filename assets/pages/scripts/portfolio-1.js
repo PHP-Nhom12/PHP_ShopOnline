@@ -1,8 +1,7 @@
 (function($, window, document, undefined) {
     'use strict';
 
-    // init cubeportfolio
-    $('#js-grid-juicy-projects').cubeportfolio({
+    var options = {
         filters: '#js-filters-juicy-projects',
         loadMore: '#js-loadMore-juicy-projects',
         loadMoreAction: 'click',
@@ -54,12 +53,20 @@
                     timeout: 10000
                 })
                 .done(function(result) {
+                    // console.log(result);
+
                     t.updateSinglePage(result);
                 })
                 .fail(function() {
                     t.updateSinglePage('AJAX Error! Please refresh the page!');
                 });
         },
-    });
+    };
+
+    // init cubeportfolio
+    $('#card_sanphamhot').cubeportfolio(options);
+    $('#card_7').cubeportfolio(options);
+    $('#card_4').cubeportfolio(options);
+
     
 })(jQuery, window, document);

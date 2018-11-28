@@ -34,6 +34,7 @@
 
         <!-- CUSTOME STYLE -->
         <link href="../assets/css/index.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css">
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
 </head>

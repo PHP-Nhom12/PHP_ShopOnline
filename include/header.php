@@ -11,7 +11,7 @@
 
     ?>
     <!-- END HEAD -->
-    <body class="page-container-bg-solid page-header-menu-fixed">
+    <body class="page-container-bg-solid">
         <div class="page-wrapper">
             <div class="page-wrapper-row">
                 <div class="page-wrapper-top">

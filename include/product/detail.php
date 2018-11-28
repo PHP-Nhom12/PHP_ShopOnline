@@ -1,5 +1,5 @@
 <?
-    include_once 'libs/xulydb.php';
+    include_once __DIR__.'/../../libs/xulydb.php';
     
     $db = new XuLyDB();
 
