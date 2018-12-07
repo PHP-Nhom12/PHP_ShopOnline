@@ -18,13 +18,13 @@ function get_sp_hot() {
 
 <div class="row">
     <div class="col-md-12">
-        <div class="portlet light portlet-fit ">
+        <div class="portlet box-shadow-none">
             <div class="portlet-title">
                 <div class="caption">
                     <i class=" icon-fire font-red"></i>
                     <span class="caption-subject font-red bold uppercase">Sản Phẩm HOT</span>
                 </div>
-                <div class="tools">
+                <div class="tools pull-left">
                     <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
                 </div>
             </div>

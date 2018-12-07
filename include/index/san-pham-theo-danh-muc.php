@@ -9,6 +9,8 @@
 
     $danhmuc = [];
 
+    $classNames = [];
+
     foreach ($rows as $row) {
 
         if ($row['iddanhmuc']==0) {
@@ -17,70 +19,57 @@
             foreach ($rows as $c_row) {
                 if ($c_row['iddanhmuc'] == $idloai) {
                     $danhmuc[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
+                    $classNames[] = "card_".$c_row['idloai'];
                 }
             }
         }
     }
 
-    //var_dump($danhmuc);
+    //var_dump($classNames);
 
     foreach ($danhmuc as $cat_level1 => $cat_level2) {
     ?>
-        <div class="portlet light ">
+        <div class="row margin-bottom-40 category-header">
+            <div class="col-md-12">
+                <h1><?=$cat_level1?></h1>
+                <!-- <h2>Life is either a great adventure or nothing</h2>
+                <button type="button" class="btn btn-danger">JOIN US TODAY</button> -->
+            </div>
+        </div>
+        <?
+        foreach ($cat_level2 as $index => $cat_title) {
+        ?>
+        <div class="portlet box-shadow-none">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-fire font-blue"></i>
                     <!-- category level 1 -->
-                    <span class="caption-subject font-blue bold uppercase"><?=$cat_level1?></span>
+                    <span class="caption-subject font-blue bold uppercase"><?=$cat_title?></span>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="tabbable-line">
-                    <ul class="nav nav-tabs">
-                    <!-- category level 2 -->
-                    <?
-                    foreach ($cat_level2 as $index => $cat_title) {
-                    ?>
-                        <li class="<?=($index==4||$index==9||$index==7)?'active':''?>">
-                            <a href="#danhmuc_<?=$index?>" data-toggle="tab" aria-expanded="true"> <?=$cat_title?> </a>
-                        </li>
-                    <?    
-                    }
-                    ?>
-                    </ul>
-                    <div class="tab-content">
-                    <!-- category level 3 -->
-                    <?
-                    foreach ($cat_level2 as $index => $cat_title) {
-                    ?>
-                    <div class="tab-pane <?=($index==4||$index==9||$index==7)?'active':''?>" id="danhmuc_<?=$index?>">
-                        <div class="portfolio-content portfolio-1">
-                            <div id="card_<?=$index?>" class="cbp">
-                                <!-- begin product card -->
-                                <?
-                                foreach ($products as $product) {
-                                    if ($product['loaisp'] == $index) {
-                                        include "include/product-card.php";
-                                    }
-                                }
-                                ?>
-                                <!-- end product card -->
-                            </div>
-                        </div>
-                    </div>
-                    <?
-                    }
-                    ?>
+                <div class="portfolio-content portfolio-1">
+                    <div name="card_<?=$index?>" class="cbp">
+                        <!-- begin product card -->
+                        <?
+                        foreach ($products as $product) {
+                            if ($product['loaisp'] == $index) {
+                                include "include/product-card.php";
+                            }
+                        }
+                        ?>
+                        <!-- end product card -->
                     </div>
                 </div>
             </div>
         </div>
+        <?    
+        }
+        ?>
     <?
-        
     }
 
 ?>
-

@@ -133,6 +133,21 @@
 
         <script src="../assets/pages/scripts/portfolio-1.js" type="text/javascript"></script>
         <script type="text/javascript">
+        (function($, window, document, undefined) {
+            'use strict';
+
+            // init cubeportfolio
+            $('#card_sanphamhot').cubeportfolio(options);
+            
+            $("[name^='card']").each(function( index ) {
+                $(this).cubeportfolio(options);
+            });
+
+
+            
+        })(jQuery, window, document);
+        </script>
+        <script type="text/javascript">
             $(document).ready(function()
             {
                 $('#quick_sidebar').slimScroll({

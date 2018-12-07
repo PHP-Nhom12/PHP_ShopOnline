@@ -8,16 +8,25 @@
     <div class="form-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">Tên tài khoản</label>
-        <input id="username_login" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Tên tài khoản" name="tentaikhoan" /> </div>
+        <div class="input-icon input-icon-lg">
+            <i class="fa fa-user font-green"></i>
+            <input id="username_login" class="form-control form-control-solid placeholder-no-fix input-circle" type="text" autocomplete="off" placeholder="Tên tài khoản" name="tentaikhoan" /> </div> </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">Mật khẩu</label>
-        <input id="password_login" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" name="matkhau" /> </div>
+        <div class="input-icon input-icon-lg">
+            <i class="fa fa-lock font-green"></i>
+            <input id="password_login" class="form-control form-control-solid placeholder-no-fix input-circle" type="password" autocomplete="off" placeholder="Mật khẩu" name="matkhau" /> </div> </div>
+    <div class="md-checkbox-inline text-center">
+        <div class="md-checkbox">
+            <input type="checkbox" id="ghinho" class="md-check" name="ghinho" value="1">
+            <label for="ghinho">
+                <span></span>
+                <span class="check"></span>
+                <span class="box"></span> Ghi nhớ </label>
+        </div>
+    </div>
     <div class="form-actions">
         <button type="submit" class="btn green uppercase">Đăng Nhập</button>
-        <label class="rememberme check mt-checkbox mt-checkbox-outline">
-            <input type="checkbox" name="ghinho" value="1" />Ghi nhớ
-            <span></span>
-        </label>
         <a href="javascript:;" id="forget-password" class="forget-password">Quên mật khẩu?</a>
     </div>
     <div class="login-options" style="display: none">

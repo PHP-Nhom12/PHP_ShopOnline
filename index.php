@@ -44,7 +44,7 @@ include_once('include/header.php');
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Tất cả sản phẩm</span>
+                                <span>Trang chủ</span>
                             </li>
                         </ul>
                         <!-- END PAGE BREADCRUMBS -->
