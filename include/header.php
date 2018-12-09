@@ -1,3 +1,51 @@
+<? 
+
+    include_once 'libs/xulydb.php';
+    $db = new XuLyDB();
+
+    $rows = $db->lay_du_lieu("LoaiSP");
+
+    $products = $db->lay_du_lieu("SANPHAM");
+
+    $danhmuc = [];
+
+    $classNames = [];
+
+    foreach ($rows as $row) {
+
+        if ($row['iddanhmuc']==0) {
+            $idloai = $row['idloai'];
+
+            foreach ($rows as $c_row) {
+                if ($c_row['iddanhmuc'] == $idloai) {
+                    $danhmuc[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
+                    $classNames[] = "card_".$c_row['idloai'];
+                }
+            }
+        }
+    }
+
+    // danh mục theo cid
+    if (isset($_GET['cid'])) {
+        $products = $db->lay_du_lieu("SANPHAM", "daxoa = 0 and loaisp=".$_GET['cid']);
+
+        $danhmuc2 = [];
+
+        foreach ($rows as $row) {
+
+            if ($row['iddanhmuc']==0) {
+                $idloai = $row['idloai'];
+
+                foreach ($rows as $c_row) {
+                    if ($c_row['iddanhmuc'] == $idloai && $c_row['idloai'] == $_GET['cid']) {
+                        $danhmuc2[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
+                    }
+                }
+            }
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -65,13 +113,29 @@
                                             <a href="index.php"> Trang Chủ
                                                 <span class="arrow"></span>
                                             </a>
-                                            
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  ">
-                                            <a href="product.php"> Sản Phẩm
+                                        <?
+                                        foreach ($danhmuc as $cat_level1 => $cat_level2) {
+                                        ?>
+                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                            <a href="javascript:;"> <?=$cat_level1?>
                                                 <span class="arrow"></span>
                                             </a>
+                                            <ul class="dropdown-menu pull-left">
+                                            <?
+                                            foreach ($cat_level2 as $index => $cat_title) {
+                                            ?>
+                                                <li aria-haspopup="true" class=" ">
+                                                    <a href="product.php?cid=<?=$index?>" class="nav-link  "><i class="icon-tag"></i> <?=$cat_title?> </a>
+                                                </li>
+                                            <?
+                                            }
+                                            ?>
+                                            </ul>
                                         </li>
+                                        <?
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->

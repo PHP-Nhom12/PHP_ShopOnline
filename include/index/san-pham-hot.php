@@ -7,7 +7,7 @@ function get_sp_hot() {
 
     $row = $db->lay_du_lieu("SANPHAM, SanPhamHOT", "SANPHAM.pid = SanPhamHOT.idsanpham AND SANPHAM.daxoa = 0 AND SanPhamHOT.daxoa = 0");
 
-    foreach (array_slice($row, 0, 8) as $product) {
+    foreach (array_slice($row, 0, 6) as $product) {
         $tgketthuc=$product['thoigianketthuc'];
         if(date("Y-m-d", strtotime($tgketthuc)) > date('Y-m-d')){
             include "include/product-card.php";

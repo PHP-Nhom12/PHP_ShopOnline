@@ -1,33 +1,6 @@
-<? 
+<?
 
-    include_once 'libs/xulydb.php';
-    $db = new XuLyDB();
-
-    $rows = $db->lay_du_lieu("LoaiSP");
-
-    $products = $db->lay_du_lieu("SANPHAM");
-
-    $danhmuc = [];
-
-    $classNames = [];
-
-    foreach ($rows as $row) {
-
-        if ($row['iddanhmuc']==0) {
-            $idloai = $row['idloai'];
-
-            foreach ($rows as $c_row) {
-                if ($c_row['iddanhmuc'] == $idloai) {
-                    $danhmuc[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
-                    $classNames[] = "card_".$c_row['idloai'];
-                }
-            }
-        }
-    }
-
-    //var_dump($classNames);
-
-    foreach ($danhmuc as $cat_level1 => $cat_level2) {
+    foreach ($danhmuc2 as $cat_level1 => $cat_level2) {
     ?>
         <div class="row margin-bottom-40 category-header">
             <div class="col-md-12">
@@ -56,6 +29,7 @@
                         <!-- begin product card -->
                         <?
                         foreach ($products as $product) {
+
                             if ($product['loaisp'] == $index) {
                                 include "include/product-card.php";
                             }
@@ -68,8 +42,6 @@
         </div>
         <?    
         }
-        ?>
-    <?
     }
 
 ?>

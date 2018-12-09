@@ -6,7 +6,7 @@
             <div class="cbp-l-caption-alignCenter">
                 <div class="cbp-l-caption-body">
                     <a href="include/product/detail.php?pid=<?=$product['pid']?>" class="cbp-singlePage cbp-l-caption-buttonLeft btn red uppercase btn red uppercase" rel="nofollow">Xem chi tiết</a>
-                    <a href="cart.php?pid=<?=$product['pid']?>" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Thêm vào giỏ</a>
+                    <a href="cart.php?pid=<?=$product['pid']?>" class="cbp-l-caption-buttonRight btn red uppercase btn red uppercase">Thêm vào giỏ</a>
                 </div>
             </div>
         </div>

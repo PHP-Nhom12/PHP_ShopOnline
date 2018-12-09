@@ -63,10 +63,6 @@ include_once('include/header.php');
 
                                 //include_once("include/index/san-pham-ban-chay.php");
 
-                                include_once("include/index/san-pham-hot.php");
-
-                                include_once("include/index/san-pham-theo-danh-muc.php");
-
                                 ?>
 
                             </div>
