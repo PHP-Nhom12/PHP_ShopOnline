@@ -115,3 +115,13 @@
 .cbp-caption:hover {
 	box-shadow: 0 3px 6px rgba(0, 0, 0, .2), 0 3px 6px rgba(0, 0, 0, .26);
 }
+
+.feeds li .col1>.cont>.cont-col2>.desc {
+	margin-left: 60px;
+}
+.profile ul.profile-nav li.active a {
+	color: #169ef4;
+	background: #ecf5fb;
+	text-decoration: none;
+	border-left: solid 2px #169ef4
+}

@@ -14,6 +14,12 @@
                 <!-- BEGIN PAGE CONTENT BODY -->
                 <div class="page-content">
                     <div class="container">
+                    <?
+                        if (isset($_GET['pid'])) {
+                            include_once "include/product/detail.php";
+                        }
+                        else {
+                    ?>
                         <!-- BEGIN PAGE BREADCRUMBS -->
                         <ul class="page-breadcrumb breadcrumb">
                             <li>
@@ -51,10 +57,8 @@
                                 </div>
                                 <div class="col-sm-9">
                                 <?
-
-                                    // include_once "include/product/all.php";
                                     include_once("include/index/san-pham-theo-danh-muc.php");
-
+                                }
                                 ?>
                                     
                                 </div>

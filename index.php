@@ -1,5 +1,4 @@
 <?
-session_start();
 
 if(isset($_POST['tentaikhoan']) && isset($_POST['matkhau'])) {
     require('require/db.php');

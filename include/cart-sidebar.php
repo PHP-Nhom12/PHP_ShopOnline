@@ -28,42 +28,33 @@
     //     $gio_hang[] = $san_pham;
     // }
 ?>
-<div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+<div class="tab-pane active page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
     <div class="page-quick-sidebar-alerts-list">
-        <h3 class="list-heading">General</h3>
+        <h3 class="list-heading">Giỏ Hàng</h3>
         <ul class="feeds list-items">
         <?
+        // var_dump($gio_hang);
         foreach ($gio_hang as $i => $value) {
+            $tong = $value['so_luong']*$value['dongia'];
         ?>
-            <!-- <li>
+            <li>
                 <div class="col1">
                     <div class="cont">
                         <div class="cont-col1">
-                            <div class="label label-sm label-info">
-                                <i class="fa fa-check"></i>
-                            </div>
+                                <img width="50px" class="rounded" src="assets/images/<?=$value['pid']?>.jpg" alt="...">
                         </div>
                         <div class="cont-col2">
-                            <div class="desc"> You have 4 pending tasks.
-                                <span class="label label-sm label-warning "> Take action
-                                    <i class="fa fa-share"></i>
-                                </span>
+                            <div class="desc">
+                            <!-- <span class="label label-sm label-info "> <?=$value['pid']?> </span> -->
+                            <?=$value['tensanpham']?>
+                            <a href="javascript:;" class="label label-sm label-danger text-white"> <i class="fa fa-remove"></i></a> <br/>
+                            <span class="text-muted">Số lượng: <?=$value['so_luong']?></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col2">
-                    <div class="date"> Just now </div>
-                </div>
-            </li> -->
-            <li class="media">
-                <img class="media-object" src="assets/images/<?=$value['pid']?>.jpg" alt="...">
-                <div class="media-body">
-                    <div class="media-status">
-                        <span class="badge badge-success"><?=$value['soluong']?></span>
-                    </div>
-                    <h4 class="media-heading"><?=$value['tensanpham']?></h4>
-                    <div class="media-heading-sub"> <?=$value['dongia']?> </div>
+                    <div class="date"><?=number_format($tong)?>đ </div>
                 </div>
             </li>
         <?

@@ -77,7 +77,7 @@
         <!-- BEGIN QUICK NAV -->
         <?
 
-        include_once("include/footer/quick-nav.php");
+        //include_once("include/footer/quick-nav.php");
 
         ?>
         <!-- END QUICK NAV -->
@@ -153,6 +153,61 @@
                 $('#quick_sidebar').slimScroll({
                     height: "100%",
                     position: "right"
+                });
+
+                // Get current path and find target link
+                var path = document.URL.split("/")[3];
+                  
+                // Account for home page with empty path
+                if ( path == '' ) {
+                    path = 'index.php';
+                }
+                      
+                var target = $('a[href="'+path+'"]');
+                // Add active class to target link
+                target.parent().addClass('active');
+                target.parents(".menu-dropdown").addClass('active');
+
+                $(".btn .fa-minus").parent().on("click", function() {
+                    var pid = $(this).attr("data-target-pid");
+                    var nums = $(".cart-item-nums[data-pid='"+pid+"']").text();
+                    
+                    if (nums <= 99 && nums > 1) nums--;
+
+                    $.ajax({
+                        url: 'include/update-cart-item-nums.php',
+                        type: 'POST',
+                        data: {pid: pid, nums: nums},
+                    })
+                    .done(function() {
+                        console.log("success");
+                        $(".cart-item-nums[data-pid='"+pid+"']").text(nums);
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                    // console.log($(this).parent().attr("data-target-pid"));
+                });
+                $(".btn .fa-plus").parent().on("click", function() {
+                    var pid = $(this).attr("data-target-pid");
+                    var nums = $(".cart-item-nums[data-pid='"+pid+"']").text();
+
+                    if (nums < 99 && nums >= 1) nums++;
+
+                    $.ajax({
+                        url: 'include/update-cart-item-nums.php',
+                        type: 'POST',
+                        data: {pid: pid, nums: nums},
+                    })
+                    .done(function(res) {
+                        console.log("success");
+                        $(".cart-item-nums[data-pid='"+pid+"']").text(nums);
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                    
+                    // console.log($(this).parent().attr("data-target-pid"));
                 });
             });
         </script>

@@ -1,33 +1,21 @@
 <?
 
-session_start();
-
 include 'include/header.php';
+
+// get SANPHAM
+$san_phams = $db->lay_du_lieu("SANPHAM");
+
+$gio_hang = [];
+
+// Da co san pham trong session
+if (isset($_SESSION['gio-hang']))
+{
+    $gio_hang = $_SESSION['gio-hang'];
+}
+
 
 if (isset($_GET['pid']))
 {
-
-    include 'require/db.php';
-    
-    // get SANPHAM
-    $query = 'SELECT * FROM SANPHAM WHERE daxoa = 0';
-    $select = $conn->query($query);
-
-    while ($row = $select->fetch_assoc())
-    {
-        $san_phams[] = $row;
-    }
-
-    $select->close();
-
-    $gio_hang = [];
-
-    // Da co san pham trong session
-    if (isset($_SESSION['gio-hang']))
-    {
-        $gio_hang = $_SESSION['gio-hang'];
-    }
-
     for ($i=0; $i < count($gio_hang); $i++) {
         if ($gio_hang[$i]['pid'] == $_GET['pid']) {
             $gio_hang[$i]['so_luong']++;
@@ -36,7 +24,9 @@ if (isset($_GET['pid']))
     }
 
 
+
     if ($i == count($gio_hang)) {
+    var_dump($i);
         for ($i=0; $i < count($san_phams); $i++) { 
             if ($san_phams[$i]['pid'] == $_GET['pid']) {
                 $san_pham = $san_phams[$i];
@@ -48,7 +38,10 @@ if (isset($_GET['pid']))
         $gio_hang[] = $san_pham;
     }
 
+}
+
     $_SESSION['gio-hang'] = $gio_hang;
+
     
 ?>
 
@@ -107,23 +100,29 @@ if (isset($_GET['pid']))
                                                                 </thead>
                                                                 <tbody>
                                                                     <? 
-                                                                    for ($i=0; $i < count($gio_hang); $i++):
+                                                                    foreach ($gio_hang as $key => $value):
                                                                     ?>
                                                                     <tr>
-                                                                        <td><?=$gio_hang[$i]['pid']?></td>
-                                                                        <td><img width="150px" src="../assets/images/<?=$gio_hang[$i]['pid']?>.jpg"></td>
+                                                                        <td><?=$value['pid']?></td>
+                                                                        <td><img width="150px" src="../assets/images/<?=$value['pid']?>.jpg"></td>
                                                                         <td>
-                                                                            <a href="product.php?pid=<?=$gio_hang[$i]['pid']?>"> <?=$gio_hang[$i]['tensanpham']?> </a>
+                                                                            <a href="product.php?pid=<?=$value['pid']?>"> <?=$value['tensanpham']?> </a>
                                                                         </td>
-                                                                        <td> <?=number_format($gio_hang[$i]['dongia'])?> VND </td>
-                                                                        <td> <?=$gio_hang[$i]['so_luong']?> </td>
+                                                                        <td> <?=number_format($value['dongia'])?>đ </td>
+                                                                        <td> 
+                                                                                <span class="btn btn-sm btn-warning" data-target-pid="<?=$value['pid']?>"><i class="fa fa-minus"></i></span>
+                                                                                <span class="cart-item-nums" data-pid="<?=$value['pid']?>"><?=$value['so_luong']?></span>
+                                                                                <span class="btn btn-sm btn-success" data-target-pid="<?=$value['pid']?>"><i class="fa fa-plus"></i></span>
+                                                                            
+                                                                        </td>
                                                                         <td>
-                                                                            <a href="javascript:;" class="btn btn-sm btn-danger">
+                                                                            <a href="/include/remove-cart-item.php?key=<?=$key?>" class="btn btn-sm btn-danger">
                                                                                 <i class="fa fa-close"></i> Xóa khỏi giỏ hàng</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?
-                                                                    endfor;
+                                                                        
+                                                                    endforeach;
                                                                     ?>
                                                                 </tbody>
                                                             </table>
@@ -155,11 +154,6 @@ if (isset($_GET['pid']))
 </div>
 
 <?
-}
-else
-{
-    echo "Chua co pid";
-}
 
 include 'include/footer.php';
 

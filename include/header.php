@@ -1,4 +1,6 @@
-<? 
+<?
+
+    session_start();
 
     include_once 'libs/xulydb.php';
     $db = new XuLyDB();
@@ -10,6 +12,8 @@
     $danhmuc = [];
 
     $classNames = [];
+
+    $danhmuc2 = [];
 
     foreach ($rows as $row) {
 
@@ -29,8 +33,6 @@
     if (isset($_GET['cid'])) {
         $products = $db->lay_du_lieu("SANPHAM", "daxoa = 0 and loaisp=".$_GET['cid']);
 
-        $danhmuc2 = [];
-
         foreach ($rows as $row) {
 
             if ($row['iddanhmuc']==0) {
@@ -38,6 +40,20 @@
 
                 foreach ($rows as $c_row) {
                     if ($c_row['iddanhmuc'] == $idloai && $c_row['idloai'] == $_GET['cid']) {
+                        $danhmuc2[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
+                    }
+                }
+            }
+        }
+    }
+    else {
+        foreach ($rows as $row) {
+
+            if ($row['iddanhmuc']==0) {
+                $idloai = $row['idloai'];
+
+                foreach ($rows as $c_row) {
+                    if ($c_row['iddanhmuc'] == $idloai) {
                         $danhmuc2[$row['tenloai']][$c_row['idloai']] = $c_row['tenloai'];
                     }
                 }
@@ -109,7 +125,7 @@
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="active">
+                                        <li aria-haspopup="true">
                                             <a href="index.php"> Trang Chủ
                                                 <span class="arrow"></span>
                                             </a>
@@ -136,6 +152,11 @@
                                         <?
                                         }
                                         ?>
+                                        <li aria-haspopup="true">
+                                            <a href="cart.php"> Giỏ Hàng
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
