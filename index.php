@@ -1,25 +1,19 @@
 <?
 
+session_start();
+
 if(isset($_POST['tentaikhoan']) && isset($_POST['matkhau'])) {
-    require('require/db.php');
-    # Buoc 2: Tao cau truy van SQL
-    $sql = "SELECT * FROM `TAIKHOAN` WHERE `tentaikhoan`='".$_POST['tentaikhoan']."' AND `matkhau`='".md5($_POST['matkhau'])."'";
+    require_once('libs/xulydb.php');
+
+    $db = new XuLyDB();
+    $kq = $db->lay_du_lieu("TAIKHOAN", "tentaikhoan = '".$_POST['tentaikhoan']."' AND matkhau ='".md5($_POST['matkhau'])."'");
     
-    # Buoc 3: thuc thi SQL
-    $result = $conn->query($sql);
-    $n = $result->num_rows;
-    if($n > 0) {
-        $user = $result->fetch_assoc();
-    }
-    # Buoc 4: Dong ket noi
-    $conn->close();
-    
-    if($n > 0) {
-        // Đưa thông tin của người đăng nhập vào session
-        $_SESSION['dang_nhap'] = $user;
+    if(!empty($kq)) {
+        $_SESSION['dang_nhap'] = $kq[0];
     } else {
         echo "Tên đăng nhập hoặc mật khẩu chưa đúng";
     }
+
 }
 
 include_once('include/header.php');

@@ -54,7 +54,7 @@
                         <li>
                             <a href="javascript:;">
                                 <i class="icon-credit-card"></i> Thanh toán
-                                <span class="badge badge-success"> 3 </span>
+                                <span class="badge badge-success"> <?=count($_SESSION['gio-hang'])?> </span>
                             </a>
                         </li>
                         <li class="divider"> </li>

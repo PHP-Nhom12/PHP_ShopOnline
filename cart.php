@@ -90,9 +90,11 @@ if (isset($_GET['pid']))
                                                             <table class="table table-striped table-hover table-bordered">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th> Mã sản phẩm </th>
+                                                                        <th> Mã SP </th>
                                                                         <th> Hình ảnh </th>
                                                                         <th> Tên sản phẩm </th>
+                                                                        <th> Màu sắc </th>
+                                                                        <th> Kích thước </th>
                                                                         <th> Đơn giá </th>
                                                                         <th> Số lượng </th>
                                                                         <th> Thành tiền </th>
@@ -117,6 +119,8 @@ if (isset($_GET['pid']))
                                                                         <td>
                                                                             <a href="product.php?pid=<?=$value['pid']?>"> <?=$value['tensanpham']?> </a>
                                                                         </td>
+                                                                        <td></td>
+                                                                        <td></td>
                                                                         <td> <?=number_format($value['dongia'])?>đ </td>
                                                                         <td> 
                                                                                 <span class="btn btn-icon-only btn-link text-danger cin-minus md-skip" data-target-pid="<?=$value['pid']?>"><i class="fa fa-angle-down"></i></span>

@@ -192,7 +192,7 @@ var Login = function() {
 
             messages: { // custom messages for radio buttons and checkboxes
                 tnc: {
-                    required: "Please accept TNC first."
+                    required: "Bạn phải đồng ý với điều khoản sử dụng và dịch vụ trước."
                 }
             },
 

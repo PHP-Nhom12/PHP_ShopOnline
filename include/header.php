@@ -1,7 +1,5 @@
 <?
 
-    session_start();
-
     include_once 'libs/xulydb.php';
     $db = new XuLyDB();
 

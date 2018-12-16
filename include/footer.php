@@ -115,7 +115,7 @@
         <script src="../assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
@@ -124,7 +124,7 @@
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
         <script src="../assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
-        <script src="../assets/pages/scripts/login.min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/login.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
         <script src="../assets/pages/scripts/ui-toastr.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
