@@ -5,43 +5,12 @@ include 'include/header.php';
 // get SANPHAM
 $san_phams = $db->lay_du_lieu("SANPHAM");
 
-$gio_hang = [];
 
 // Da co san pham trong session
 if (isset($_SESSION['gio-hang']))
 {
     $gio_hang = $_SESSION['gio-hang'];
 }
-
-
-if (isset($_GET['pid']))
-{
-    for ($i=0; $i < count($gio_hang); $i++) {
-        if ($gio_hang[$i]['pid'] == $_GET['pid']) {
-            $gio_hang[$i]['so_luong']++;
-            break;
-        }
-    }
-
-
-
-    if ($i == count($gio_hang)) {
-    // var_dump($i);
-        for ($i=0; $i < count($san_phams); $i++) { 
-            if ($san_phams[$i]['pid'] == $_GET['pid']) {
-                $san_pham = $san_phams[$i];
-                break;
-            }
-        }
-
-        $san_pham['so_luong'] = 1;
-        $gio_hang[] = $san_pham;
-    }
-
-}
-
-    $_SESSION['gio-hang'] = $gio_hang;
-
     
 ?>
 
@@ -62,7 +31,7 @@ if (isset($_GET['pid']))
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Chi tiết giỏ hàng</span>
+                                <span>Thanh Toán</span>
                             </li>
                         </ul>
                         <!-- END PAGE BREADCRUMBS -->
@@ -143,11 +112,30 @@ if (isset($_GET['pid']))
                                                         </div>
                                                     </div> <!-- row -->
                                                     <div class="row">
+                                                        <div class="col-md-6"></div>
+                                                        <div class="col-md-6">
+                                                            <div class="well">
+                                                                <div class="row static-info align-reverse">
+                                                                    <div class="col-md-8 name"> Tổng cộng: </div>
+                                                                    <div class="col-md-3 value"> $1,124.50 </div>
+                                                                </div>
+                                                                <div class="row static-info align-reverse">
+                                                                    <div class="col-md-8 name"> Phí giao hàng: </div>
+                                                                    <div class="col-md-3 value"> $40.50 </div>
+                                                                </div>
+                                                                <div class="row static-info align-reverse">
+                                                                    <div class="col-md-8 name"> Thành tiền: </div>
+                                                                    <div class="col-md-3 value"> $1,260.00 </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col-md-6 text-right">
-                                                            <a href="product.php" class="btn btn-sm btn-info"><i class="fa fa-chevron-left"></i> Tiếp tục mua hàng</a>
+                                                            <a href="cart.php" class="btn btn-sm btn-info"><i class="fa fa-chevron-left"></i> Quay lại giỏ hàng</a>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <a href="checkout.php" class="btn btn-sm btn-success">Thanh toán <i class="fa fa-chevron-right"></i></a>
+                                                            <a href="javascript:;" class="btn btn-sm btn-success">Hoàn Tất <i class="fa fa-check"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>

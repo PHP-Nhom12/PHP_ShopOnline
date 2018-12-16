@@ -116,6 +116,8 @@
         <script src="../assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -123,6 +125,8 @@
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
         <script src="../assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
         <script src="../assets/pages/scripts/login.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/ui-toastr.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="../assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
@@ -130,7 +134,6 @@
         <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
-
         <script src="../assets/pages/scripts/portfolio-1.js" type="text/javascript"></script>
         <script type="text/javascript">
         (function($, window, document, undefined) {
@@ -150,11 +153,45 @@
         <script type="text/javascript">
             $(document).ready(function()
             {
+                var UIConfirmations = function() {
+                    var n = function() {
+                        $(".bs-confirm").each(function () {
+                            $(this).on("confirmed.bs.confirmation", function() {
+                            // alert("You confirmed action #1")
+                        }), $(this).on("canceled.bs.confirmation", function() {
+                            // alert("You canceled action #1")
+                        })
+                        })
+                    };
+                    return {
+                        init: function() {
+                            n()
+                        }
+                    }
+                }();
+
+                UIConfirmations.init();
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "positionClass": "toast-top-right",
+                    "onclick": null,
+                    "showDuration": "500",
+                    "hideDuration": "500",
+                    "timeOut": "2000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
                 $('#quick_sidebar').slimScroll({
                     height: "100%",
                     position: "right"
                 });
-
+                var pathname = location.pathname.split("/")[1];
                 // Get current path and find target link
                 var path = document.URL.split("/")[3];
                   
@@ -162,46 +199,59 @@
                 if ( path == '' ) {
                     path = 'index.php';
                 }
+                if ( pathname == '' ) {
+                    pathname = 'index.php';
+                }
                       
                 var target = $('a[href="'+path+'"]');
+                var tar = $('a[href="'+pathname+'"]');
                 // Add active class to target link
                 target.parent().addClass('active');
                 target.parents(".menu-dropdown").addClass('active');
+                if (path.indexOf(pathname) >= 0)
+                    tar.parent().addClass('active');
 
-                $(".btn .fa-minus").parent().on("click", function() {
+                $(".cin-minus").on("click", function() {
                     var pid = $(this).attr("data-target-pid");
-                    var nums = $(".cart-item-nums[data-pid='"+pid+"']").text();
+                    var nums = $(".cart-item-nums[data-pid='"+pid+"']");
+                    var value = nums.text();
                     
-                    if (nums <= 99 && nums > 1) nums--;
+                    if (value <= 99 && value > 1) value--;
 
                     $.ajax({
                         url: 'include/update-cart-item-nums.php',
                         type: 'POST',
-                        data: {pid: pid, nums: nums},
+                        data: {pid: pid, nums: value},
                     })
                     .done(function() {
                         console.log("success");
-                        $(".cart-item-nums[data-pid='"+pid+"']").text(nums);
+                        nums.text(value);
+                        nums.pulsate({color:"#bf1c56",repeat:!1});
+                        toastr.info("GIẢM số lượng thành công!", "Thay đổi số lượng sản phẩm!");
                     })
                     .fail(function() {
                         console.log("error");
                     })
                     // console.log($(this).parent().attr("data-target-pid"));
                 });
-                $(".btn .fa-plus").parent().on("click", function() {
+                $(".cin-plus").on("click", function() {
                     var pid = $(this).attr("data-target-pid");
-                    var nums = $(".cart-item-nums[data-pid='"+pid+"']").text();
+                    var nums = $(".cart-item-nums[data-pid='"+pid+"']");
+                    var value = nums.text();
 
-                    if (nums < 99 && nums >= 1) nums++;
+                    if (value < 99 && value >= 1) value++;
 
                     $.ajax({
                         url: 'include/update-cart-item-nums.php',
                         type: 'POST',
-                        data: {pid: pid, nums: nums},
+                        data: {pid: pid, nums: value},
                     })
                     .done(function(res) {
                         console.log("success");
-                        $(".cart-item-nums[data-pid='"+pid+"']").text(nums);
+                        nums.text(value);
+                        nums.pulsate({color:"#399bc3",repeat:!1});
+                        toastr.success("TĂNG số lượng thành công!", "Thay đổi số lượng sản phẩm!");
+
                     })
                     .fail(function() {
                         console.log("error");
@@ -209,6 +259,7 @@
                     
                     // console.log($(this).parent().attr("data-target-pid"));
                 });
+
             });
         </script>
     </body>

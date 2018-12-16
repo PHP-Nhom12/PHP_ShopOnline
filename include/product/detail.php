@@ -13,7 +13,7 @@
 
     $ctsp = $db->lay_du_lieu("ChiTietSP, MauSacSP, KichThuocSP", $params);
 
-    var_dump($ctsp);
+    // var_dump($ctsp);
 ?>
 
 <div class="page-content">
