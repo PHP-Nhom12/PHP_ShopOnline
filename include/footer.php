@@ -153,6 +153,30 @@
         <script type="text/javascript">
             $(document).ready(function()
             {
+                $("#register-submit-btn").click(function(e) {
+                    if ($("#username").val() && $("#email").val() && $("#address").val() && $("#password").val() && $("#tnc").prop("checked"))
+                    {
+                        var username = $("#username").val();
+                        var password = $("#password").val();
+                        var email = $("#email").val();
+                        var address = $("#address").val();
+
+                        $.ajax({
+                            url: 'ajax/register.php',
+                            type: 'POST',
+                            data: {username: username, password: password, email: email, address: address},
+                        })
+                        .done(function(res) {
+                            console.log("success", res);
+                            toastr.info(res, "Thông báo!");
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                    }
+                    e.preventDefault();
+                });
+
                 var UIConfirmations = function() {
                     var n = function() {
                         $(".bs-confirm").each(function () {
@@ -247,7 +271,7 @@
                         data: {pid: pid, nums: value},
                     })
                     .done(function(res) {
-                        console.log("success");
+                        console.log("success", );
                         nums.text(value);
                         nums.pulsate({color:"#399bc3",repeat:!1});
                         toastr.success("TĂNG số lượng thành công!", "Thay đổi số lượng sản phẩm!");

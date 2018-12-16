@@ -1,5 +1,7 @@
 <?
 
+session_start();
+
 include 'include/header.php';
 
 // get SANPHAM
@@ -17,31 +19,33 @@ if (isset($_SESSION['gio-hang']))
 if (isset($_GET['pid']))
 {
     for ($i=0; $i < count($gio_hang); $i++) {
+        
         if ($gio_hang[$i]['pid'] == $_GET['pid']) {
             $gio_hang[$i]['so_luong']++;
             break;
         }
     }
-
-
-
+    
+    
+    
     if ($i == count($gio_hang)) {
-    // var_dump($i);
+        // var_dump($i);
         for ($i=0; $i < count($san_phams); $i++) { 
             if ($san_phams[$i]['pid'] == $_GET['pid']) {
                 $san_pham = $san_phams[$i];
                 break;
             }
         }
-
+        
         $san_pham['so_luong'] = 1;
         $gio_hang[] = $san_pham;
     }
-
+    
+    $_SESSION['gio-hang'] = $gio_hang;
 }
 
-    $_SESSION['gio-hang'] = $gio_hang;
 
+    // var_dump($_SESSION['gio-hang'], $gio_hang);
     
 ?>
 
@@ -106,7 +110,7 @@ if (isset($_GET['pid']))
                                                                     if (empty($gio_hang)) {
                                                                     ?>
                                                                         <tr>
-                                                                            <td class="text-center" colspan="7">Giỏ hàng rỗng, quay lại và thêm một vài món đồ vào nhé !</td>
+                                                                            <td class="text-center" colspan="9">Giỏ hàng rỗng, quay lại và thêm một vài món đồ vào nhé !</td>
                                                                         </tr>
                                                                     <?
                                                                     }
