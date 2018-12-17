@@ -165,10 +165,19 @@
                             url: 'ajax/register.php',
                             type: 'POST',
                             data: {username: username, password: password, email: email, address: address},
+                            dataType: "json",
                         })
                         .done(function(res) {
-                            console.log("success", res);
-                            toastr.info(res, "Thông báo!");
+                            if (res.code == 1)
+                            {
+                                console.log("success");
+                                toastr.success(res.msg, "Thông báo!");
+                                $("#register-back-btn").click();
+                            }
+                            else
+                            {
+                                toastr.warning(res.msg, "Thông báo!");
+                            }
                         })
                         .fail(function() {
                             console.log("error");

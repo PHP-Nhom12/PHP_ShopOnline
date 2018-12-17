@@ -133,3 +133,6 @@
 	margin-right: 0 !important;
 	padding: 0 !important;
 }
+div#quick_sidebar.page-quick-sidebar-wrapper.bg-dark {
+	max-width: 300px;
+}

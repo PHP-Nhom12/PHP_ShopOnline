@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.38)
 # Database: QuanLyCuaHang
-# Generation Time: 2018-12-16 18:39:25 +0000
+# Generation Time: 2018-12-17 00:48:56 +0000
 # ************************************************************
 
 
@@ -60,10 +60,8 @@ CREATE TABLE `ChiTietHD` (
   `idsanpham` varchar(11) NOT NULL DEFAULT '',
   `soluong` int(11) NOT NULL,
   `thanhtien` int(32) NOT NULL,
-  `mausac` varchar(32) NOT NULL DEFAULT '',
-  `kichthuoc` varchar(11) NOT NULL DEFAULT '',
   `daxoa` bit(1) NOT NULL,
-  PRIMARY KEY (`idhoadon`,`idsanpham`,`mausac`,`kichthuoc`),
+  PRIMARY KEY (`idhoadon`,`idsanpham`),
   KEY `CHITIETHD_SANPHAM` (`idsanpham`),
   CONSTRAINT `CHITIETHD_SANPHAM` FOREIGN KEY (`idsanpham`) REFERENCES `SANPHAM` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -469,7 +467,9 @@ LOCK TABLES `TAIKHOAN` WRITE;
 INSERT INTO `TAIKHOAN` (`uid`, `tentaikhoan`, `matkhau`, `email`, `diachi`, `laquanly`, `dakichhoat`, `daxoa`)
 VALUES
 	(1,'hxutixnnn','d35ccfe87ac69d91e08190d261e1550d','ng.huutien98@gmail.com','HCM',b'1',b'1',b'0'),
-	(2,'admin','e10adc3949ba59abbe56e057f20f883e','test@gmail.com','HCM',b'0',b'0',b'0');
+	(2,'admin','e10adc3949ba59abbe56e057f20f883e','test@gmail.com','HCM',b'0',b'0',b'0'),
+	(3,'a','0cc175b9c0f1b6a831c399e269772661','a@aa','a',b'1',b'1',b'1'),
+	(4,'test','92eb5ffee6ae2fec3ad71c777531578f','b@bb','b',b'1',b'1',b'1');
 
 /*!40000 ALTER TABLE `TAIKHOAN` ENABLE KEYS */;
 UNLOCK TABLES;

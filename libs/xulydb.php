@@ -37,7 +37,7 @@ class XuLyDB {
 		$values = [];
 		foreach ($params as $key => $value) {
 			$fields[]= $key;
-			$values[]= "'" . $value . "',";
+			$values[]= "'" . $value . "'";
 		}
 
 		$fields = implode(",", $fields);

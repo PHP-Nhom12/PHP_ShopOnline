@@ -30,6 +30,7 @@
 
         <!-- BEGIN PAGES STYLES -->
         <link href="../assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/pages/css/search.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- CUSTOME STYLE -->
